@@ -25,13 +25,13 @@ def main():
     humidity = response['main']['humidity']
     
     #Get the description from response
-    description = response['weather'][0]['description']
+    description = response['weather'][0]['description'].capitalize()
     
     # Get the sunrise time from response and convert it to local time in hh:mm:ss format
-    sunrise_time = dt.datetime.fromtimestamp(response['sys']['sunrise'] + response['timezone'], dt.timezone.utc)
+    sunrise_time = dt.datetime.fromtimestamp(response['sys']['sunrise'] + response['timezone'], dt.timezone.utc).strftime('%H:%M:%S')
     
     # Get the sunset time from response and convert it to local time 
-    sunset_time = dt.datetime.fromtimestamp(response['sys']['sunset'] + response['timezone'], dt.timezone.utc)
+    sunset_time = dt.datetime.fromtimestamp(response['sys']['sunset'] + response['timezone'], dt.timezone.utc).strftime('%H:%M:%S')
     
     # Get the wind speed from response
     wind_speed = response['wind']['speed']
